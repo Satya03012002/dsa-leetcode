@@ -1,0 +1,18 @@
+def helper(str, i, j):
+        # print(j)
+        if i == j:
+            return 1
+        if str[i] == str[j] and i+1 == j:
+            return 2
+        if str[i] == str[j]:
+            return helper(str, i+1, j-1)+2
+        else:
+            return max( helper(str, i, j-1), helper(str, i+1, j))
+            
+def longestPalindromeSubseq(): 
+        # str = "bbbab"
+        str = "cbbd"
+        count = helper(str, 0, len(str)-1)
+        return count
+
+print(longestPalindromeSubseq())
