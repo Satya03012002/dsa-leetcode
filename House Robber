@@ -1,0 +1,20 @@
+def house_robber():
+  nums = [2,7,9,3,1]
+  memo={}
+  amount = helperr(nums, 0, memo)
+  print("result",amount)
+
+def helperr(nums, i, memo):
+  if i in memo:
+    return memo[i]
+  if i >= len(nums):
+     return 0
+  else:
+     a = nums[i]+helperr(nums, i+2, memo)
+     b = helperr(nums, i+1, memo)
+     memo[i] = max(a,b)
+     return memo[i]
+  
+
+
+house_robber()
