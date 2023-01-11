@@ -1,0 +1,19 @@
+def Unique_path_td():
+  row, col = 3, 7
+  memo = {}
+  def dfs(i,j, count):
+    if i == row -1 and j == col - 1:
+      count = count + 1
+      return count
+    elif i > row -1 or j > col - 1:
+      return 0
+    elif (i,j) in memo:
+      return memo[(i,j)]
+    else:
+      memo[(i,j)] =  dfs(i+1,j,count) + dfs(i,j+1,count)
+      return memo[(i,j)]
+
+  count = dfs(0,0, 0);
+  print(count)
+
+Unique_path_td()
