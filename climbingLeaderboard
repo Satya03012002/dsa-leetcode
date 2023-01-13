@@ -36,7 +36,7 @@ def climbingLeaderboard():
 
       return curr
     
-    curr = 6
+    curr = len(res)-1
     print(res)
     print(curr)
     ans = []
