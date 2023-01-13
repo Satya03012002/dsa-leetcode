@@ -1,0 +1,63 @@
+def climbingLeaderboard():
+    ranked = [100, 90, 90, 80, 75, 60]
+    player = [50 ,65 ,77 ,90 ,102]
+    # Write your code here
+    res=[]
+    res.insert(0,1)
+
+    
+
+    for i in range(1,len(ranked)):
+        
+          if ranked[i] == ranked[i-1]:
+              res.insert(i,res[i-1])
+          else:
+              res.insert(i, res[i-1]+1)
+
+    res.insert(len(ranked),res[len(ranked)-1]+1)
+    ranked.insert(len(ranked),0)
+    
+    def rank(res,curr,score):  
+      if score == ranked[0]:
+        curr = 1
+        # print(curr)
+        return curr  
+      for i in range(1,len(ranked)):
+         
+          if ranked[i] == ranked[i-1]:
+              res.insert(i,res[i-1])
+          else:
+              res.insert(i, res[i-1]+1)
+          if score == ranked[i]:
+            
+            print("score",score)
+            curr = res[i]
+            # print("curr ->",curr)
+
+      return curr
+    
+    curr = 6
+    print(res)
+    print(curr)
+    ans = []
+
+    for i in range(len(player)):
+      score = player[i]
+      ranked[curr] = score
+      ranked.sort(reverse = True)
+      print(ranked)
+      # res.clear()
+      curr =  rank(res,0,score)
+      
+      
+      print(curr)
+      ans.append(curr)
+
+    return ans
+
+    
+   
+    
+
+   
+print(climbingLeaderboard())
