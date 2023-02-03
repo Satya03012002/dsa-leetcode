@@ -1,4 +1,4 @@
-class Solution {
+\*class Solution {
     public List<Integer> findDuplicates(int[] nums) {
         
         
@@ -31,4 +31,32 @@ class Solution {
 		arr[first] = arr[second];
 		arr[second] = temp;
 	}
-}
+ } */
+ 
+ class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        i = 0
+        def swap(nums,a,b):
+            temp = nums[a]
+            nums[a] = nums[b]
+            nums[b] = temp 
+        for x in nums:
+            
+            if x == i+1:
+                
+                i = i+1
+                continue
+            else:
+                while x != i+1:
+                   
+                    if nums[x-1] == nums[i]:
+                       
+                        return x
+                    else:
+                        
+                        swap(nums, x-1, i)
+                       
+                        x = nums[i]
+                i = i+1
+        
+
